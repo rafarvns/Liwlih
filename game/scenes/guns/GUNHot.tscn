@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/guns/hot/sprite_10.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/guns/hot/sprite_11.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/guns/hot/sprite_12.png" type="Texture" id=3]
+[ext_resource path="res://scenes/guns/KinematicBody2D.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 10.8307
+
+[node name="GUNHot" type="Node2D"]
+position = Vector2( 0.270554, 0.405827 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Sprite" type="AnimatedSprite" parent="KinematicBody2D"]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 4
+speed_scale = 1.5
+playing = true
+centered = false
+
+[node name="Collision" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 12.0583, 12.0583 )
+shape = SubResource( 2 )
+disabled = true
