@@ -6,9 +6,7 @@
 [ext_resource path="res://assets/sprites/enemies/ooze/l0_sprite_Ooze2.png" type="Texture" id=4]
 [ext_resource path="res://scenes/characters/Ooze.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ) ],
 "loop": true,
@@ -16,26 +14,34 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.8861
+
 [node name="Ooze" type="KinematicBody2D"]
-position = Vector2( -96.4637, 78.9846 )
+position = Vector2( -384.198, 37.8372 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 646.472, 208.887 )
+rotation = 1.5708
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 2
+speed_scale = 2.5
+playing = true
+centered = false
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 563.68, 225.689 )
-frames = SubResource( 2 )
-animation = "idle"
-speed_scale = 2.5
-playing = true
-centered = false
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 598.143, 249.174 )
+scale = Vector2( 0.8, 0.8 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
