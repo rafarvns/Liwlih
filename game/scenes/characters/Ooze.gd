@@ -23,11 +23,11 @@ func get_input():
 
 func shoot_loop():
 	if Input.is_action_pressed("ui_shot") and can_shoot == true:
-		var pos = get_global_position()
-		pos.x += 622
-		pos.y += 236
 		can_shoot = false
 		var shoot_instance = shoot.instance()
+		var pos = get_global_position()
+		pos.y -= 12
+		pos.x += 12
 		shoot_instance.position = pos
 		get_parent().add_child(shoot_instance)
 		yield(get_tree().create_timer(rate_of_shoot), "timeout")

@@ -18,29 +18,24 @@ animations = [ {
 radius = 30.8861
 
 [node name="Ooze" type="KinematicBody2D"]
-position = Vector2( -384.198, 37.8372 )
+position = Vector2( 39.243, 43.3669 )
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 646.472, 208.887 )
+position = Vector2( 40.0563, -39.8661 )
 rotation = 1.5708
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
 animation = "idle"
+frame = 3
 speed_scale = 2.5
 playing = true
 centered = false
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 598.143, 249.174 )
+position = Vector2( -7.89787, 0.15419 )
 scale = Vector2( 0.8, 0.8 )
 shape = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
