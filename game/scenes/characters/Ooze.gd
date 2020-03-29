@@ -1,41 +1,46 @@
 extends KinematicBody2D
 
-export (int) var speed = 500
-
+var hp = 200
+var oozy_speed = 500
 var velocity = Vector2()
-var screen_size
-var shoot = preload("res://scenes/guns/GUNHot.tscn")
-var can_shoot = true
-var rate_of_shoot = 0.1
+var is_enter = true
+var direction = true
+var destiny = 0
 
-func get_input():
-	screen_size = get_viewport_rect().size
+func _ready():
 	velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += 1
-	if Input.is_action_pressed('ui_left'):
-		velocity.x -= 1
-	if Input.is_action_pressed('ui_down'):
-		velocity.y += 1
-	if Input.is_action_pressed('ui_up'):
-		velocity.y -= 1
-	velocity = velocity.normalized() * speed
-
-func shoot_loop():
-	if Input.is_action_pressed("ui_shot") and can_shoot == true:
-		can_shoot = false
-		var shoot_instance = shoot.instance()
-		var pos = get_global_position()
-		pos.y -= 12
-		pos.x += 12
-		shoot_instance.position = pos
-		get_parent().add_child(shoot_instance)
-		yield(get_tree().create_timer(rate_of_shoot), "timeout")
-		can_shoot = true
-
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	destiny = rng.randf_range(300, 1100)
+	oozy_speed = rng.randf_range(80, 150)
+	
 func _process(delta):
-	shoot_loop()
+	
+	if hp <= 0:
+		queue_free()
+	
+	shoot()
+	ia_movement()
 
-func _physics_process(delta):
-	get_input()
+func shoot():
+	print(hp)
+
+func ia_movement():
+	var pos = get_global_position()
+	if pos.x > destiny:
+		velocity.x -= 1
+	else:
+		velocity.x = 0		
+		if direction == true:
+			velocity.y -= 1
+			if pos.y < 40:
+				direction = false
+				velocity.y = 0
+		else:
+			velocity.y += 1
+			if pos.y > 600:
+				direction = true
+				velocity.y = 0
+				
+	velocity = velocity.normalized() * oozy_speed
 	velocity = move_and_slide(velocity)

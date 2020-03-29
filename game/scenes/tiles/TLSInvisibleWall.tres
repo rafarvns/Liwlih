@@ -2,20 +2,20 @@
 
 [ext_resource path="res://assets/tiles/invisible.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 64.1004, 48.0904, -0.101921, 48.0527, -0.101921, -0.071949, 64.0463, -0.101921 )
 
 [resource]
-0/name = "Sprite"
+0/name = "invisible.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
+0/region = Rect2( 0, 0, 64, 48 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 32, 32 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 32, 32 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 0/shape = SubResource( 1 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
@@ -24,6 +24,6 @@ extents = Vector2( 32, 32 )
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 32, 32 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
