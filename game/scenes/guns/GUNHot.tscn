@@ -22,18 +22,18 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="GunHot" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="Sprite" type="AnimatedSprite" parent="KinematicBody2D"]
+[node name="Sprite" type="AnimatedSprite" parent="GunHot"]
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 3
+frame = 1
 speed_scale = 1.5
 playing = true
 centered = false
 
-[node name="Collision" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="Collision" type="CollisionShape2D" parent="GunHot"]
 position = Vector2( 12.0583, 12.0583 )
 shape = SubResource( 2 )
 disabled = true
