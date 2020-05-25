@@ -36,4 +36,3 @@ centered = false
 [node name="Collision" type="CollisionShape2D" parent="GunHot"]
 position = Vector2( 12.0583, 12.0583 )
 shape = SubResource( 2 )
-disabled = true
