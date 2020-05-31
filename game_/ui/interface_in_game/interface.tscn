@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/interface_in_game/interface.gd" type="Script" id=1]
+[ext_resource path="res://characters/player_liwlih/spt_stunner.png" type="Texture" id=2]
+[ext_resource path="res://characters/player_liwlih/spt_smoke.png" type="Texture" id=3]
+[ext_resource path="res://characters/player_liwlih/spt_skycut.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.847059, 0.188235, 0.0588235, 1 )
@@ -17,15 +20,18 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [node name="interface" type="Control"]
-margin_right = 152.0
-margin_bottom = 16.0
+margin_right = 171.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 39.3489, 24.1522 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="life_bar" type="ProgressBar" parent="."]
-margin_right = 152.0
+[node name="life_bar_stunner" type="ProgressBar" parent="."]
+margin_left = 22.3041
+margin_top = 7.0
+margin_right = 166.304
 margin_bottom = 14.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
@@ -34,3 +40,58 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="life_bar_skycut" type="ProgressBar" parent="."]
+margin_left = 22.304
+margin_top = 19.5
+margin_right = 166.304
+margin_bottom = 26.5
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="life_bar_smoke" type="ProgressBar" parent="."]
+margin_left = 22.304
+margin_top = 32.0
+margin_right = 166.304
+margin_bottom = 39.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprite_stunner" type="Sprite" parent="."]
+position = Vector2( 14.8101, 10.2295 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="sprite_skycut" type="Sprite" parent="."]
+position = Vector2( 14.81, 23 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="sprite_skycut2" type="Sprite" parent="."]
+position = Vector2( 14.81, 35.2 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="lbl_score" type="Label" parent="."]
+margin_left = 10.1398
+margin_top = 43.7061
+margin_right = 50.1398
+margin_bottom = 57.7061
+text = "Score:"
+
+[node name="lbl_score_points" type="Label" parent="."]
+margin_left = 53.0
+margin_top = 44.0
+margin_right = 93.0
+margin_bottom = 58.0
+text = "0"

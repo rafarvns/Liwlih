@@ -1,10 +1,13 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-var explosion = preload("res://characters/player_liwlih/anim_player_bullet_explosion.tscn")
-
-var damage = 35
+var direction = Vector2()
+var speed = 105
+var contact_animation = preload("res://characters/player_liwlih/anim_player_bullet_explosion.tscn")
 
 func _process(delta):
+	
+	move_and_slide(direction * speed)
+	
 	var position = $".".position
 	var screen_width = get_viewport().size.x
 	var screen_height = get_viewport().size.y
@@ -15,10 +18,12 @@ func _process(delta):
 		queue_free()
 
 
-func _on_bullet_default_body_entered(body):
-	if body.is_in_group("enemy"):
-		var explosion_instance = explosion.instance()
+
+
+func _on_body_body_entered(body):
+	if body.is_in_group("player"):
+		var explosion_instance = contact_animation.instance()
 		explosion_instance.position = get_global_position()
 		get_tree().get_root().add_child(explosion_instance)
-		body.add_damage(damage)
+		body.add_damage(20)
 		queue_free()

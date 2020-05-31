@@ -3,9 +3,12 @@ extends KinematicBody2D
 export var speed = 200
 export var bullet_speed = 1000
 export var bullet_damage = 35
-export var fire_rate = 0.15
+export var fire_rate = 0.04
 export var change_ship_rate = 1
 export var life = 100
+export var life_stunner = 100
+export var life_skycut = 100
+export var life_smoke = 100
 
 
 var stunner = preload("res://characters/player_liwlih/spt_stunner.png")
@@ -66,36 +69,33 @@ func change_ship():
 			$skycut_fire.visible = false
 			$smoke_fire.visible = false
 			bullet_texture = bullet_stunner
-			bullet_speed = 1000
-			bullet_damage = 35
+			bullet_speed = 1400
+			bullet_damage = 28
 			speed = 250
+			life_smoke = life
+			life = life_stunner
 		elif actual_ship == 2:
 			$sprite.texture = skycut
 			$skycut_fire.visible = true
 			$stunner_fire.visible = false
 			$smoke_fire.visible = false
 			bullet_texture = bullet_skycut
-			bullet_speed = 1200
-			bullet_damage = 25
+			bullet_speed = 1600
+			bullet_damage = 24
 			speed = 350
+			life_stunner = life
+			life = life_skycut
 		elif actual_ship == 3:
 			$sprite.texture = smoke
 			$smoke_fire.visible = true
 			$skycut_fire.visible = false
 			$stunner_fire.visible = false
 			bullet_texture = bullet_smoke
-			bullet_speed = 800
-			bullet_damage = 50
+			bullet_speed = 1300
+			bullet_damage = 30
 			speed = 200
-		else:
-			$sprite.texture = stunner
-			$stunner_fire.visible = true
-			$skycut_fire.visible = false
-			$smoke_fire.visible = false
-			bullet_texture = bullet_stunner
-			bullet_speed = 1000
-			bullet_damage = 35
-			speed = 250
+			life_skycut = life
+			life = life_smoke
 		
 		can_change_ship = false
 		yield(get_tree().create_timer(change_ship_rate), "timeout")
@@ -103,4 +103,9 @@ func change_ship():
 
 func update_interface():
 	var interface = $"../interface"
-	interface.life = life
+	if(actual_ship == 1):
+		interface.life_stunner = life
+	elif(actual_ship == 2):
+		interface.life_skycut = life
+	elif(actual_ship == 3):
+		interface.life_smoke = life
